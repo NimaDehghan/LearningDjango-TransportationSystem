@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Transportation Site</title>		
+		<link rel="stylesheet"	href="{% static 'affairs/css/fontawesome.css' %}" />
+		<link rel="stylesheet" href="{% static 'affairs/css/style.css' %}" />
+		<link rel="stylesheet" href="{% static 'affairs/css/bootstrap.css' %}" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">	</script>
+		<script>
+			$(function() {
+				// Click-handler for the refresh-link
+				$('.captcha-refresh').click(function(){
+					var $form = $(this).parents('form');
+					var url = location.protocol + "//" + window.location.hostname + ":"
+							+ location.port + "/captcha/refresh/";
+
+					// Make the AJAX-call
+					$.getJSON(url, {}, function(json) {
+						$form.find('input[name="captcha_0"]').val(json.key);
+						$form.find('img.captcha').attr('src', json.image_url);
+					});
+
+					return false;
+				});
+			});
+			
+            function warning() {
+                if(confirm("Are you sure?!")){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }                    
+                
+		</script>
+		<style>
+			
+			.dropdown {
+				display: inline-block;
+				position: relative;
+			}
+			.dropdown-content {
+				display: none;
+				position: absolute;
+				width: 100%;
+				overflow: auto;
+				box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
+			}
+			.dropdown:hover .dropdown-content {
+				display: block;
+			}
+			.dropdown-content a {
+				display: block;
+				color: #000000;
+				padding: 5px;
+				text-decoration: none;
+			}
+			.dropdown-content a:hover {
+				color: #FFFFFF;
+				background-color: #00A4BD;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row box" style="background-color: rgb(0, 255, 153) ;">
+				<h1 style="font-family: Timenewroman; font-style: italic; font-weight: bold; ">{% block titlepage %} {% endblock %}</h1>
+				<ul class="nav m-2">
+					<li class="nav-link"><a class="btn btn-secondary" href="/affairs/index">Home </a></li>
+
+					<li class="nav-link"><a class="btn btn-secondary" href="/affairs/customer/create">Customer Registration</a>	</li>
+					<li class="nav-link"><a class="btn btn-secondary" href="/affairs/delivery/list">Delivery List</a> </li>
+					<li class="nav-link"><a class="btn btn-secondary" href="/affairs/transport/list">Transport List</a> </li>
+
+					{% if user.is_authenticated %}
+					<li class="nav-link"><a class="btn btn-secondary" href="/accounts/profile">Profile</a>
+						<a class="btn btn-danger" href="/accounts/logout">Logout</a></li>
+					<li class="nav-link">
+						<div class="dropdown">
+							<button class="btn btn-primary">Administration</button>
+							<div class="dropdown-content">
+								<a href="/affairs/customer/list" class="btn btn-secondary">Customer List</a>
+								<a href="/affairs/courier/list" class="btn btn-secondary">Courier List</a>
+							</div>
+						</div>	
+					</li>
+					{% else %}
+					<li class="nav-link"><a class="btn btn-danger" href="/accounts/profileRegister">Register</a></li>
+					<li class="nav-link"><a class="btn btn-success" href="/accounts/login">Login</a></li>					
+					{% endif %}
+				</ul>
+			</div>
+
+			<div class="row">{% block mainContent %} {% endblock %}</div>
+		</div>
+		
+	</body>
+</html>

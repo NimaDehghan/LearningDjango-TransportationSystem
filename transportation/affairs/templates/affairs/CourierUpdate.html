@@ -1,0 +1,19 @@
+{% extends "affairs/layout.html" %}
+{% load static %}
+
+{% block titlepage %}  Update Courier {% endblock %} 
+{% block mainContent %}
+    <form action="" method="POSt" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mainborder">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="mylable">Courier ID:{{coForm.courierId}}</p>
+                <p class="mylable">Courier Name:{{coForm.cName}}</p>
+                <p class="mylable">Capacity:{{coForm.capacity}}</p>
+                <p><button type="submit" class="btn btn-success">Update</button></p>
+              </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

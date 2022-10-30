@@ -1,0 +1,20 @@
+{% extends "affairs/layout.html" %}
+{% load static %}
+
+{% block titlepage %} Transportation Site {% endblock %} 
+{% block mainContent %}     
+    <form action="" method="POSt" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mainborder">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mylable">Name:{{cForm.name}}</div>
+                <div class="mylable">Surname:{{cForm.surname}}</div>    
+                <div class="mylable">Identity Number:{{cForm.identityNo}}</div>
+                <div class="mylable">Address:{{cForm.address}}</div>
+                <p><button type="submit" class="btn btn-success">Update</button></p>
+              </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

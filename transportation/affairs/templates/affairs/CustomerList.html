@@ -1,0 +1,19 @@
+{% extends "affairs/layout.html" %}
+{% load static %}
+
+{% block titlepage %} Customer List {% endblock %} 
+{% block mainContent %}     
+    {%for cl in customers%}
+        <div class="col-md-2">
+            <div class="timeBox">
+                <a href="update/{{cl.id}}" class="btn btn-success">Update</a>
+                <a href="delete/{{cl.id}}" class="btn btn-danger" onclick="return warning()">Delete</a>
+                <p>Name:{{cl.name}}</p>
+                <p>Surname:{{cl.surname}}</p>    
+                <p>Identity Number:{{cl.identityNo}}</p>
+                <p>Address:{{cl.address}}</p>
+            </div>
+        </div>
+    {%endfor%}
+{% endblock %}
+    

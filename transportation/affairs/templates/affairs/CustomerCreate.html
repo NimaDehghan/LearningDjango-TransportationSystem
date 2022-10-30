@@ -1,0 +1,20 @@
+{% extends "affairs/layout.html" %}
+{% block titlepage %} Register New Customer {% endblock %} 
+{% block mainContent %} 
+
+    <form action="" method="POSt" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mainborder">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="mylable">Name:{{cForm.name}}</p>
+                <p class="mylable">Surname:{{cForm.surname}}</p>    
+                <p class="mylable">Identity Number:{{cForm.identityNo}}</p>
+                <p class="mylable">Address:{{cForm.address}}</p>
+                <p><button type="submit" class="btn btn-success">Create</button></p>
+              </div>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}

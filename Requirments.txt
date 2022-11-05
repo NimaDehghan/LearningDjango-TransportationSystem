@@ -1,0 +1,8 @@
+You need to install following requirements:
+1- Install Python 3.10.4 along with PIP(In most cases pip is installed before automatically while installing python)
+    https://www.python.org/downloads/
+2- Provide virtuall environment by [vitrualenv env] in cmd,powershell,. . . in current folder
+	then run c:\...\env\scripts\activate.bat
+3- install Django 4.1.1 by c:\...> pip install django
+4- install Pillow 9.2.0 by c:\...> pip install pillow
+5- install djando-simple-captcha by c:\...> pip install djando-simple-captcha

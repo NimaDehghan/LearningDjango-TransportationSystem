@@ -1,0 +1,16 @@
+{% extends "affairs/layout.html" %}
+{% block titlepage %} Delivery List {% endblock %} 
+{% block mainContent %}
+    <a href="create" class="btn btn-primary">Insert new delivery</a>
+    {%for dl in deliveries%}     
+        <div class="col-md-2">
+            <div class="timeBox">
+                <a href="update/{{dl.id}}" class="btn btn-success">Update</a>
+                <a href="delete/{{dl.id}}" class="btn btn-danger" onclick="return warning()">Delete</a>
+                <p>Date & Time:{{dl.dateTime}}</p>
+                <p>Status of Delivery:{{dl.isSuccessfull}}</p>    
+                <p>Courier ID:{{dl.courierId}}</p>                
+            </div>            
+        </div>
+    {%endfor%}
+{% endblock %}

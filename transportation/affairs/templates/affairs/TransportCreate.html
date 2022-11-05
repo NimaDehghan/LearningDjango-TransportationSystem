@@ -1,0 +1,23 @@
+{% extends "affairs/layout.html" %}
+{% load static %}
+
+{% block titlepage %} Insert New Transport {% endblock %} 
+{% block mainContent %}     
+    <form action="" method="POSt" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mainborder">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mylable">Vehicle Number:{{tForm.vehicleNo}}</div>
+                <div class="mylable">Departure Date:{{tForm.departDate}}</div>
+                <div class="mylable">Arrival Date:{{tForm.arrivalDate}}</div>
+                <div class="mylable">Courier ID:{{tForm.courierId}}</div>
+                <div class="mylable">Source:{{tForm.source}}</div>
+                <div class="mylable">Destination:{{tForm.destination}}</div>
+                <div class="mylable">Customer ID:{{tForm.customerId}}</div>
+                <p><button type="submit" class="btn btn-success">Create</button></p>
+              </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

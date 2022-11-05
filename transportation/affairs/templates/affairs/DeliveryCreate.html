@@ -1,0 +1,19 @@
+{% extends "affairs/layout.html" %}
+{% load static %}
+
+{% block titlepage %} Insert New Delivery {% endblock %} 
+{% block mainContent %} 
+    <form action="" method="POSt" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mainborder">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="mylable">Date & Time:{{dForm.dateTime}}</p>
+                <p class="mylable">Status of Delivery:{{dForm.isSuccessfull}}</p>
+                <p class="mylable">Courier:{{dForm.courierId}}</p>
+                <p><button type="submit" class="btn btn-success">Create</button></p>
+              </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}
